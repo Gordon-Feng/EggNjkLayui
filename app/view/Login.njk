@@ -1,0 +1,80 @@
+{% include "../components/HeadInfo.njk" %}
+<body>
+  <div class="login-main">
+    <header class="layui-elip">登录</header>
+    <form class="layui-form" action="/login" method="post">
+      <div class="layui-input-inline">
+        <input type="text" name="account" required lay-verify="required" placeholder="用户名" autocomplete="off" class="layui-input">
+      </div>
+      <div class="layui-input-inline">
+        <input type="password" name="password" required lay-verify="required" placeholder="密码" autocomplete="off" class="layui-input">
+      </div>
+      <div class="layui-input-inline login-btn">
+        <button lay-submit lay-filter="login" class="layui-btn">登录</button>
+      </div>
+      <hr/>
+      <p><a href="register.html" class="fl">立即注册</a><a href="javascript:;" class="fr">忘记密码？</a></p>
+    </form>
+  </div>
+</body>
+<script src="../../layui/layui.js"></script>  
+<script type="text/javascript">
+  layui.use(['form','layer','jquery'], function (){
+    var form = layui.form;
+    var $ = layui.jquery;
+    // 登录
+    form.on('submit(login)', function(data){
+      console.log("登录data:",data);
+      $.ajax({ url:'/login', data:data.field, dataType:'text', type:'post', success:function (data) {
+          var result = JSON.parse(data);
+          console.log("登录结果:",result);
+          layer.msg(result.msg);
+          if(result.status == 200){
+            window.location.href = "/";
+          }
+        }
+      });
+      return false;
+    });
+  })
+</script>
+<style>
+  .login-main {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 350px;
+    margin: 0 auto;
+  }
+
+  .login-main header {
+    margin-top: 200px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 30px;
+    font-weight: 100;
+    text-align: center;
+  }
+
+  .login-main header, .login-main form, .login-main form .layui-input-inline {
+    margin-bottom: 15px;
+  }
+
+  .login-main form .layui-input-inline, .login-main form .layui-input-inline input, .login-main form .layui-input-inline button {
+    width: 100%;
+  }
+
+  .login-main form .login-btn {
+    margin-bottom: 5px;
+  }
+
+  .fl {
+    float: left;
+  }
+
+  .fr {
+    float: right;
+  }
+</style>
