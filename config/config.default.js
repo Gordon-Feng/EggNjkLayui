@@ -51,6 +51,25 @@ module.exports = appInfo => {
     domainWhiteList: ['http://localhost:8081']
   }
 
+  // 配置mysql信息
+  config.mysql = {
+    host:'localhost',
+    user:'root',
+    password:'123456',
+    database:'super_school',
+    port:3306
+  }
+
+  // 配置redis信息
+  config.redis = {
+    client: {
+      port: 6379,          
+      host: '127.0.0.1',
+      password: '123456',
+      db: 0,
+    }
+  }
+
   // 配置跨域
   config.cors = {
     origin: "*",
