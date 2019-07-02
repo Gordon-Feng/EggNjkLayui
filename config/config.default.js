@@ -51,13 +51,15 @@ module.exports = appInfo => {
     domainWhiteList: ['http://localhost:8081']
   }
 
-  // 配置mysql信息
+  // 配置mysql信息(单数据源)
   config.mysql = {
-    host:'localhost',
-    user:'root',
-    password:'123456',
-    database:'super_school',
-    port:3306
+    client: {
+      host:'localhost',
+      user:'root',
+      password:'123456',
+      database:'super_club',
+      port:3306
+    }
   }
 
   // 配置redis信息
