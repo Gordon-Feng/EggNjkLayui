@@ -4,10 +4,10 @@
     <header class="layui-elip">登录</header>
     <form class="layui-form" action="/login" method="post">
       <div class="layui-input-inline">
-        <input type="text" name="account" required lay-verify="required" placeholder="用户名" autocomplete="off" class="layui-input">
+        <input type="text" name="club_account" required lay-verify="required" placeholder="用户名" autocomplete="off" class="layui-input">
       </div>
       <div class="layui-input-inline">
-        <input type="password" name="password" required lay-verify="required" placeholder="密码" autocomplete="off" class="layui-input">
+        <input type="password" name="club_password" required lay-verify="required" placeholder="密码" autocomplete="off" class="layui-input">
       </div>
       <div class="layui-input-inline login-btn">
         <button lay-submit lay-filter="login" class="layui-btn">登录</button>
@@ -24,13 +24,13 @@
     var $ = layui.jquery;
     // 登录
     form.on('submit(login)', function(data){
-      console.log("登录data:",data);
+      console.log("登录data:",data.field);
       $.ajax({ url:'/login', data:data.field, dataType:'text', type:'post', success:function (data) {
           var result = JSON.parse(data);
           console.log("登录结果:",result);
           layer.msg(result.msg);
           if(result.status == 200){
-            window.location.href = "/";
+            {# window.location.href = "/"; #}
           }
         }
       });
