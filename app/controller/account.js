@@ -14,6 +14,7 @@ class AccountController extends Controller {
 
   /**
    * 登录接口
+   * TO DO 密码加密
    */
   async LoginApi() {
     const { ctx } = this;
@@ -25,7 +26,13 @@ class AccountController extends Controller {
       ctx.body = {
         status: -200, data: "", msg: "账号不存在"
       };
+    }else if(LoginResult.club_account != ReqData.club_account || LoginResult.club_password != ReqData.club_password){
+      ctx.body = {
+        status: -200, data: "", msg: "密码错误"
+      };
     }else{
+      ctx.session.club_name = LoginResult.club_name;
+      ctx.session.club_account = LoginResult.club_account;
       ctx.body = {
         status: 200, data: LoginResult, msg: "登录成功"
       };
