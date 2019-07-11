@@ -22,20 +22,9 @@
   layui.use(['form','layer','jquery'], function (){
     var form = layui.form;
     var $ = layui.jquery;
-    // 登录
-    form.on('submit(login)', function(data){
-      console.log("登录data:",data.field);
-      $.ajax({ url:'/login', data:data.field, dataType:'text', type:'post', success:function (data) {
-          var result = JSON.parse(data);
-          console.log("登录结果:",result);
-          layer.msg(result.msg);
-          if(result.status == 200){
-            window.location.href = "/";
-          }
-        }
-      });
-      return false;
-    });
+    if(`{{msg}}`){
+      layer.msg(`{{msg}}`);
+    }
   })
 </script>
 <style>

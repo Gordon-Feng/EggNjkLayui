@@ -23,19 +23,17 @@ class AccountController extends Controller {
     var LoginResult = await ctx.service.account.GetClubInfoByAccount(ReqData.club_account);
     console.log("登录接口LoginResult:",LoginResult);
     if(!LoginResult){
-      ctx.body = {
-        status: -200, data: "", msg: "账号不存在"
-      };
+      await ctx.render('Login.njk', { title: "登录" , msg: "账号不存在" });
+    }else if(LoginResult.error){
+      await ctx.render('Login.njk', { title: "登录" , msg: "系统错误" });
     }else if(LoginResult.club_account != ReqData.club_account || LoginResult.club_password != ReqData.club_password){
-      ctx.body = {
-        status: -200, data: "", msg: "密码错误"
-      };
+      await ctx.render('Login.njk', { title: "登录" , msg: "密码错误" });
     }else{
+      ctx.session.club_id = LoginResult.club_id;
       ctx.session.club_name = LoginResult.club_name;
       ctx.session.club_account = LoginResult.club_account;
-      ctx.body = {
-        status: 200, data: LoginResult, msg: "登录成功"
-      };
+      ctx.session.club_logo = LoginResult.club_logo;
+      ctx.redirect('/');
     }
   }
 }
