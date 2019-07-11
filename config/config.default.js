@@ -54,21 +54,21 @@ module.exports = appInfo => {
   // 配置mysql信息(单数据源)
   config.mysql = {
     client: {
-      host:'localhost',
-      user:'root',
-      password:'123456',
-      database:'super_club',
-      port:3306
+      host: process.env.MYSQL_HOST,
+      user: process.env.MYSQL_USER,
+      password: process.env.MYSQL_PWD,
+      database: process.env.MYSQL_DATABASE,
+      port: process.env.MYSQL_PORT
     }
   }
 
   // 配置redis信息
   config.redis = {
     client: {
-      port: 6379,          
-      host: '127.0.0.1',
-      password: '123456',
-      db: 0,
+      port: process.env.REDIS_PORT,          
+      host: process.env.REDIS_HOST, 
+      password: process.env.REDIS_PWD,
+      db: process.env.REDIS_DB,
     }
   }
 
