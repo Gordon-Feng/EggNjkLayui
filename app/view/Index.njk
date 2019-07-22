@@ -40,14 +40,14 @@
       <!-- 侧边菜单 -->
       <div class="layui-side layui-side-menu">
         <div class="layui-side-scroll">
-          <div class="layui-logo" lay-href="/home">
+          <div class="layui-logo" lay-href="/club">
             <span><img style="height:49px;width:49px;" src="{{img_host}}{{account_info.club_logo}}">&emsp;{{account_info.club_name}}</span>
           </div>    
           <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu" lay-filter="layadmin-system-side-menu">
             <li data-name="get" class="layui-nav-item layui-this">
-              <a href="javascript:;" lay-href="/home" lay-tips="主页" lay-direction="2">
+              <a href="javascript:;" lay-href="/club" lay-tips="主页" lay-direction="2">
                 <i class="layui-icon layui-icon-home"></i>
-                <cite>主页</cite>
+                <cite>社团信息</cite>
               </a>
             </li>
             <li data-name="get" class="layui-nav-item">
@@ -76,7 +76,7 @@
         </div>
         <div class="layui-tab" lay-unauto lay-allowClose="true" lay-filter="layadmin-layout-tabs">
           <ul class="layui-tab-title" id="LAY_app_tabsheader">
-            <li lay-id="/home" lay-attr="/home" class="layui-this"><i class="layui-icon layui-icon-home"></i></li>
+            <li lay-id="/club" lay-attr="/club" class="layui-this"><i class="layui-icon layui-icon-home" style="margin-right:5px;"></i>社团信息</li>
           </ul>
         </div>
       </div>
@@ -84,7 +84,7 @@
       <!-- 主体内容 -->
       <div class="layui-body" id="LAY_app_body">
         <div class="layadmin-tabsbody-item layui-show">
-          <iframe src="/home" frameborder="0" class="layadmin-iframe"></iframe>
+          <iframe src="/club" frameborder="0" class="layadmin-iframe"></iframe>
         </div>
       </div>
       
