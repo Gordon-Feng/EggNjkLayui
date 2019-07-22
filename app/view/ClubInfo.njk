@@ -1,0 +1,39 @@
+{% include "./components/HeadInfo.njk" %}
+<body>
+  <form class="layui-form" style="margin-top:20px;" action="">
+    <div class="layui-form-item">
+      <div class="layui-inline">
+        <label class="layui-form-label">社团名称</label>
+        <div class="layui-input-inline">
+          <input type="tel" name="club_name" value="{{club_info.club_name}}" lay-verify="required" autocomplete="off" class="layui-input">
+        </div>
+      </div>
+      <div class="layui-inline">
+        <label class="layui-form-label">学校名称</label>
+        <div class="layui-input-inline">
+          <input type="text" name="school_name" value="{{club_info.school_name}}" lay-verify="required" autocomplete="off" class="layui-input">
+        </div>
+      </div>
+      <div class="layui-inline">
+        <label class="layui-form-label">社团标语</label>
+        <div class="layui-input-inline">
+          <input type="text" name="club_slogan" value="{{club_info.club_slogan}}" lay-verify="required" autocomplete="off" class="layui-input">
+        </div>
+      </div>
+    </div>
+  </form>
+</body>
+
+<script src="../../layui/layui.js"></script>  
+<script type="text/javascript">
+  layui.use(['form','layer','jquery'], function (){
+    var form = layui.form;
+    var $ = layui.jquery;
+  })
+</script>
+
+<style>
+  .layui-form-item .layui-input-inline{
+    width:250px;
+  }
+</style>
